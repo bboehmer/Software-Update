@@ -108,7 +108,7 @@ namesJAMF.each {|package|
   version=newestVersions[package]
 
 }
-url = "https://[user]:[password]@jss.classroom.ohio-state.edu:8443/JSSResource/computerapplications/application/firefox.app/version/44.0.2"
+url = "https://[user]:[password]@[url]"
 page = agent.get(url)
 file = page.parser.to_s
 puts page
@@ -117,7 +117,7 @@ File.open('app/views/welcome/jssAppsInstalled.sh','w') do |write|
 
     a.puts "#!/bin/bash
     namesJAMF.each{|app|
-      write.puts('curl -s -u [user]:[password] https://jss.classroom.ohio-state.edu:8443/JSSResource/computerapplications/application/#{app}/version/#{version}')
+      write.puts('curl -s -u [user]:[password] [url]application/#{app}/version/#{version}')
     }
       File.(jssAppsInstalled.sh).length
 end
